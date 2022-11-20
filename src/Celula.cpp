@@ -14,11 +14,22 @@ Celula::Celula() {
 	this->estado=muerto;
 }
 
+void Celula::setEstado(Estado estado){
+	this->estado=estado;
+}
+
+void Celula::setGen(){
+	unsigned int genAleatorio1=rand();
+	this->gen.genAlfa=(genAleatorio1 % 256);
+}
+
 void Celula::setCelulaViva(){
-	unsigned int genAleatorio=rand();
-	this->gen.genAlfa=(genAleatorio % 256);
-	this->gen.genBeta=(genAleatorio % 256);
-	this->gen.genGamma=(genAleatorio % 256);
+	unsigned int genAleatorio1=rand();
+	unsigned int genAleatorio2=rand();
+	unsigned int genAleatorio3=rand();
+	this->gen.genAlfa=(genAleatorio1 % 256);
+	this->gen.genBeta=(genAleatorio2 % 256);
+	this->gen.genGamma=(genAleatorio3 % 256);
 	this->estado=vivo;
 }
 
@@ -33,9 +44,9 @@ void Celula::setCelulaVecina(Celula* vecina, int i){
 	this->vecinos[i]=vecina;
 }
 
-Estado Celula::mostrarCelulasVecinas(int i){
-	Celula* vecino=this->vecinos[i];
-	return vecino->getEstado();
+Celula* Celula::getVecina(int i){
+	Celula* vecina=vecinos[i];
+	return vecina;
 }
 
 Estado Celula::getEstado(){

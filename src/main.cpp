@@ -6,19 +6,41 @@
  */
 #include <iostream>
 #include "Tablero.h"
+#include "Juego.h"
+#include "ReadData.h"
+
 int main(){
-	Tablero * tablero=new Tablero(10, 10, 3);
-	tablero->setCasillero(5, 4, 2);
-	tablero->setCasillero(2, 1, 1);
-	tablero->setCasillero(2, 2, 1);
-	tablero->setCasillero(2, 1, 2);
-	tablero->setCasillero(3, 2, 2);
-	//tablero->setCasillero(2, 3, 2);
-	//tablero->setCasillero(5, 1);
-	//tablero->setCasillero(5, 10);
-	tablero->mostrarTablero();
+	//Juego* juego=new Juego();
+	std::string Datos1= "src/DataMap.txt";
+
+		 // prints !!!Hello World!!!
+		vector<string> datos;
+		vector<string> config;
+		tomarDatosDeArchivoTXT(Datos1,datos, config);
+		Juego* juego=new Juego(stoi(config[0]),stoi(config[1]), stoi(config[2]));
+		/*
+		for(int i=0;i<=config.size();i++){
+			std::cout<<config[i]<<std::endl;
+		}*/
+		juego->cargarDatosDeEntrada(datos);
+		juego->ImprimirDatosDeEntrada();
+		std::cout<<"test"<<std::endl;
+
+		/*for(int i=0;i<=datos.size();i++){
+			std::cout<<datos[i]<<std::endl;
+		}*/
+		juego->iniciarjuego();
+		juego->jugarJuego();
+
+/*
+	Tablero * tablero=new Tablero(stoi(config[0]), stoi(config[1]), stoi(config[2]));
 	tablero->cargarVecinos();
-	int j=2;
+	tablero->cargarDatosVector(datos);
+	tablero->mostrarTablero();
+	tablero->crearBitMapTablero(5);
+	cout<<"paso";*/
+
+	/*int j=2;
 	Celula* aux=tablero->getCasillero(j, j, j)->getCelula();
 	std::cout<<"Celulas vecinas vivas en la posicion ("<<j<<","<<j<<","<<j<<")."<<std::endl;
 	for (int i=0; i<26; i++){
@@ -28,21 +50,7 @@ int main(){
 			std::cout<<"muerto-";
 		}
 	}
-	std::cout<<std::endl;
-	tablero->setCasillero(3, 1, 2);
-	tablero->setCasillero(3, 3, 3);
-	tablero->mostrarTablero();
-	std::cout<<"Celulas vecinas vivas en la posicion ("<< j <<","<< j <<")."<<std::endl;
-	for (int i=0; i<26; i++){
-		if (aux->mostrarCelulasVecinas(i)==vivo){
-			std::cout<<"vivo-";
-		}else{
-			std::cout<<"muerto-";
-		}
-	}
-	//tablero->actualizarTablero(1);
-	//tablero->mostrarTablero();
+	std::cout<<std::endl;*/
 	return 0;
 }
-
 

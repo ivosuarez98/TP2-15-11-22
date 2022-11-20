@@ -15,6 +15,15 @@ struct Posicion{
 	unsigned int z;
 };
 
+enum Comportamiento{
+	inerte,
+	radiactivo,
+	portal,
+	bomba,
+	adefinir1,
+	adefinir2
+};
+
 class Casillero {
 private:
 	Celula* celula;

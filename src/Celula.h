@@ -27,11 +27,14 @@ private:
 	Estado estado;
 	Celula* vecinos[26];
 public:
+	static const int cantidadDeVecinos=26;
 	Celula();
+	void setEstado(Estado estado);
+	void setGen();
 	void setCelulaViva();
 	void setCelulaMuerta();
 	void setCelulaVecina(Celula* vecina, int i);
-	Estado mostrarCelulasVecinas(int i);
+	Celula* getVecina(int i);
 	Estado getEstado();
 	Gen getGenes();
 	virtual ~Celula();

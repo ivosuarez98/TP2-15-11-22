@@ -31,6 +31,6 @@ Celula* Casillero::getCelula(){
 }
 
 Casillero::~Casillero() {
-	// TODO Auto-generated destructor stub
+	delete this->celula;
 }
 
